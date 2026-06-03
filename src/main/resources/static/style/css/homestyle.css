@@ -1,0 +1,624 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #080710;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* ── Header Section ── */
+
+.header-test {
+    color: #fff;
+    position: relative;
+    top: 130px;
+    margin-left: 150px;
+    font-family: 'Cinzel', serif;
+   letter-spacing: 1px;
+}
+
+.header-title {
+    font-size: 70px;
+     font-family: 'Cinzel', serif;
+     /* letter-spacing: 2px; */
+}
+
+.header-line {
+    font-size: 18px;
+    margin-top: 15px;
+    margin-left: 60px;
+}
+
+
+/* ── Animation Container & Computers ── */
+
+.animation-container {
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    margin: 50px auto;
+    width: 700px;         /* kept; max-width below wins */
+    height: 250px;
+    max-width: 600px;
+}
+
+.computer {
+    width: 110px;
+    position: absolute;
+}
+
+.left-computer {
+    left: 20;
+    top: 0;
+    background: transparent;
+}
+.right-computer{
+    right: 50px;
+    top: 0;
+    background: transparent;
+}
+
+/* ── Paper Airplane Animation ── */
+
+.paper-airplane {
+    width: 15px;
+    height: 16px;
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    left: 95px;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    animation: fly 4s infinite;
+}
+@keyframes fly {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(80px) translateY(-5px) rotate(3deg);
+    }
+
+    50% {
+        transform: translateX(160px) translateY(5px) rotate(-3deg);
+    }
+
+    75% {
+        transform: translateX(240px) translateY(-5px) rotate(3deg);
+    }
+
+    100% {
+        transform: translateX(375px) translateY(0) rotate(0deg);
+    }
+}
+
+/* ── Dotted Path ── */
+
+.dotted-path {
+    position: absolute;
+    top: 40px;
+    left: 79px;
+    width: 405px;
+    border-top: 1px dotted #ffffff;
+    
+}
+
+@keyframes draw-path {
+    0%   { width: 0;     opacity: 0; }
+    25%  { width: 300px; opacity: 1; }
+    50%  { width: 555px; }
+    75%  { width: 600px; }
+    100% { width: 555px; }
+}
+
+/* ── Background Shapes ── */
+
+.background {
+    width: 400px;
+    height: 450px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 47%;
+    top: 50%;
+}
+
+.background .shape {
+    height: 150px;
+    width: 150px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(#1845ad, #23a2f6);
+    left: 380px;
+    top: -80px;
+}
+
+/* FIX: was right: -530px — blob was completely off-screen */
+.shape:last-child {
+    background: linear-gradient(to right, #ff512f, #f09819);
+    right: -472px;   /* ✅ was -530px */
+    bottom: -80px;
+}
+
+/* ── Social Buttons (standalone use) ── */
+
+.social div {
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #eaf0fb;
+    text-align: center;
+}
+
+/* ── Card Container ── */
+
+.card-container {
+    perspective: 1000px;
+    position: absolute;
+    top: 49%;
+    /* FIX: was right: -40px — card was cut off on the right edge */
+    right: 60px;    /* ✅ was -40px */
+    transform: translateY(-50%);
+}
+
+.card {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+/* ── Card Faces ── */
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+}
+
+.card-front {
+    z-index: 2;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back {
+    /* FIX: padding was 50px 35px — content overflowed on small text */
+    padding: 50px 35px;  /* ✅ was 50px 35px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+/* ── Card Typography ── */
+
+.card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.card p {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+/* ── Login Button (card-front) ── */
+
+.login-btn {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+/* ── Form (card-back) ── */
+
+form {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+    border: none;
+    color: #fdebeb;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+button[type="submit"] {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+
+/* ── Social Login Buttons ── */
+
+.social {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;  
+    width: 100%;
+    gap: 10px;
+}
+
+.social a {
+    width: 100%;           
+    border-radius: 3px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #eaf0fb;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+
+.social .go,
+.social .github {
+    width: 100%;   
+    margin: 0;
+}
+
+.social i {
+    margin-right: 4px;
+}
+
+.social a:hover {
+    background-color: rgba(255, 255, 255, 0.47);
+}
+
+/* ── About Button ── */
+
+.about-btn {
+    margin: 10px;
+    cursor: pointer;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── Responsive Design ── */
+
+@media (max-width: 1024px) {
+
+    body{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .header-test{
+        margin-left: 0;
+        top: 40px;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .header-title{
+        font-size: 50px;
+    }
+
+    .header-line{
+        margin-left: 0;
+        font-size: 16px;
+    }
+
+    .animation-container{
+        position: relative;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .card-container{
+        position: relative;
+        right: 0;
+        top: 140px;
+        transform: none;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .card{
+        width: 320px;
+        height: 480px;
+    }
+
+    .background{
+        display: none;
+    }
+    .dotted-path {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    width: 60%;
+    max-width: 400px;
+    border-top: 2px dotted #ffffff;
+}
+.login-btn{
+    width:100%;
+    margin-top:30px;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:#fff;
+    color:#080710;
+    font-size:20px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+    border-bottom: 20px;
+}
+
+.login-btn:hover{
+    transform:scale(1.02);
+}
+.paper-airplane{
+    width:18px;
+    height:18px;
+    background:white;
+    position:absolute;
+    top:33px;
+    left:98px;
+    clip-path:polygon(0 0,100% 50%,0 100%);
+    animation:fly 4s linear infinite;
+    z-index:2;
+    
+}
+.animation-container{
+    overflow:hidden;
+}
+/* ─────────────────────────────────────────
+   PAPER AIRPLANE ANIMATION
+───────────────────────────────────────── */
+
+@keyframes fly{
+
+    0%{
+        transform:translateX(0) translateY(0) rotate(0deg);
+    }
+
+    25%{
+        transform:translateX(80px) translateY(-5px) rotate(3deg);
+    }
+
+    50%{
+        transform:translateX(160px) translateY(5px) rotate(-3deg);
+    }
+
+    75%{
+        transform:translateX(240px) translateY(-5px) rotate(3deg);
+    }
+
+    100%{
+        transform:translateX(320px) translateY(0) rotate(0deg);
+    }
+}
+
+/* ─────────────────────────────────────────
+   TABLET RESPONSIVE
+───────────────────────────────────────── */
+
+@media (max-width:768px){
+
+    @keyframes fly{
+
+        0%{
+            transform:translateX(0) translateY(0) rotate(0deg);
+        }
+
+        25%{
+            transform:translateX(55px) translateY(-4px) rotate(3deg);
+        }
+
+        50%{
+            transform:translateX(110px) translateY(4px) rotate(-3deg);
+        }
+
+        75%{
+            transform:translateX(165px) translateY(-4px) rotate(3deg);
+        }
+
+        100%{
+            transform:translateX(220px) translateY(0) rotate(0deg);
+        }
+    }
+}
+
+/* ─────────────────────────────────────────
+   MOBILE RESPONSIVE
+───────────────────────────────────────── */
+
+@media (max-width:480px){
+
+    @keyframes fly{
+
+        0%{
+            transform:translateX(0) translateY(0) rotate(0deg);
+        }
+
+        25%{
+            transform:translateX(40px) translateY(-3px) rotate(3deg);
+        }
+
+        50%{
+            transform:translateX(80px) translateY(3px) rotate(-3deg);
+        }
+
+        75%{
+            transform:translateX(120px) translateY(-3px) rotate(3deg);
+        }
+
+        100%{
+            transform:translateX(170px) translateY(0) rotate(0deg);
+        }
+    }
+}
+}
+
+
+@media (max-width: 768px){
+
+    .header-title{
+        font-size: 38px;
+        line-height: 50px;
+    }
+
+    .header-line{
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .animation-container{
+        transform: scale(0.8);
+        top: 40px;
+    }
+
+    .card{
+        width: 90%;
+        max-width: 320px;
+        height: auto;
+        min-height: 480px;
+    }
+
+    .card-back{
+        padding: 30px 20px;
+    }
+
+    .social a{
+        font-size: 14px;
+    }
+    .dotted-path {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    width: 60%;
+    max-width: 400px;
+    border-top: 2px dotted #ffffff;
+}
+}
+
+
+@media (max-width: 480px){
+
+    .header-title{
+        font-size: 28px;
+    }
+
+    .header-line{
+        font-size: 12px;
+    }
+
+    .animation-container{
+        transform: scale(0.65);
+        top: 0;
+    }
+
+    .computer{
+        width: 80px;
+    }
+
+    .card{
+        width: 95%;
+    }
+
+    label{
+        font-size: 14px;
+    }
+
+    input{
+        height: 45px;
+    }
+
+    button[type="submit"],
+    .login-btn{
+        padding: 12px 0;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>File Sharing Application</title>
+
+    <script src="https://kit.fontawesome.com/106a3659bb.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link th:href="@{/style/css/homestyle.css}" rel="stylesheet" />
+    
+    <style media="screen">
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header-test">
+    <h1 class="header-title">File Sharing App</h1>
+    <h3 class="header-line">Effortless Sharing, Boundless Possibillities</h3>
+</div>
+
+
+
+   <main>
+    <div class="animation-container">
+        
+        <img th:src="@{/style/assests/leftpc.png}" alt="left computer" class="computer left-computer">
+        <div class="paper-airplane"></div>
+        <img th:src="@{/style/assests/rightpc.png}" alt="Right computer" class="computer right-computer">
+        <div class="dotted-path"></div>
+    </div>
+    </main>
+
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+
+    <div class="card-container">
+    <div class="card">
+        <div class="card-front">
+            <h3>About</h3><br>
+            <p>Welcome to our innovative file-sharing platform, designed to make transferring files between devices effortless and secure. Whether you're sending documents, photos, videos, or any other type of file, our app provide a seamless experience tailored to your needs.</p>
+            <p>Key Features:<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔸 Fast and Secure Transfers<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔸 User-Friendly Interface<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔸 Cross-Platform Compatibility<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔸 No Size Limits<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;🔸 Real-Time Collaboration<br><br>
+             Discover a new way of sharing files with convenience and security.Join us and start sharing smarter today!</p>
+            <button class="login-btn">Login</button>
+        </div>
+
+
+<div class="card-back">
+    <form>
+    <div class="social">
+        <a href="/oauth2/authorization/google" class="go"><i class="fab fa-google"></i> Google</a>
+        <a href="/oauth2/authorization/github" class="github"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+    <p class="about-btn">*back</p>
+    </form>
+</div>
+</div>
+
+</div>
+
+<script>
+    document.querySelector('.login-btn').addEventListener('click',function(){
+        document.querySelector('.card').classList.toggle('flipped');
+    });
+
+    document.querySelector('.about-btn').addEventListener('click',function(){
+        document.querySelector('.card').classList.toggle('flipped');
+    });
+    
+</script>
+</body>
+</html>
